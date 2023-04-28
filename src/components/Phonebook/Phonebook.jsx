@@ -1,34 +1,25 @@
-import { useState } from 'react';
 import { PhonebookList } from './PhonebookList';
-import { nanoid } from '@reduxjs/toolkit';
 import { Form } from './Form';
 import { Filter } from './Filter';
+import { useSelector } from 'react-redux';
+import { getContacts } from 'components/redux/selectors';
 
 export function Phonebook() {
-  const [contacts, setContacts] = useState([]); // LocalStorage('contacts')
-  const [filter, setFilter] = useState('');
+  const contacts = useSelector(getContacts);
 
-  const onFilter = value => {
-    setFilter(value);
-  };
-
-  const onDelete = id => {
-    setContacts(contacts.filter(item => item.id !== id));
-  };
-
-  const UpdateContacs = data => {
-    data.id = nanoid();
-    if (contacts.some(item => item.number === data.number)) {
-      return;
-    }
-    setContacts(prev => [data, ...prev]);
-  };
+  // const UpdateContacs = data => {
+  //   data.id = nanoid();
+  //   if (contacts.some(item => item.number === data.number)) {
+  //     return;
+  //   }
+  //   setContacts(prev => [data, ...prev]);
+  // };
 
   return (
     <>
-      <Form UpdateContacs={UpdateContacs} />
-      {contacts.length > 0 && <Filter filter={filter} onFilter={onFilter} />}
-      <PhonebookList contacts={contacts} filter={filter} onDelete={onDelete} />
+      <Form />
+      {contacts.length > 0 && <Filter />}
+      <PhonebookList />
     </>
   );
 }

@@ -1,6 +1,9 @@
+import { filteredContacts } from 'components/redux/slice';
+import { useDispatch } from 'react-redux';
 import css from './Phonebook.module.css';
 
-export function Filter({ onFilter, filter }) {
+export function Filter({ filter }) {
+  const dispatch = useDispatch();
   return (
     <div className={css.filter}>
       <h2>Contacts</h2>
@@ -8,9 +11,7 @@ export function Filter({ onFilter, filter }) {
         Find contacts by name
         <input
           className={css.input}
-          onInput={e => {
-            onFilter(e.target.value);
-          }}
+          onInput={e => dispatch(filteredContacts(e.target.value))}
           name="text"
           type="text"
           value={filter}

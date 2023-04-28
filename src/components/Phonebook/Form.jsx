@@ -19,7 +19,6 @@ export function Form({ UpdateContacs }) {
 
   const onSubmit = e => {
     e.preventDefault();
-    UpdateContacs({ name, number });
     dispatch(addContact({ name, number }));
 
     reset();

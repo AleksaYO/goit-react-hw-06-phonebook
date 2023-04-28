@@ -1,21 +1,20 @@
 import css from './Phonebook.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { getContacts } from 'components/redux/selectors';
+import { getContacts, getFilter } from 'components/redux/selectors';
 import { deleteContact } from 'components/redux/slice';
 
-export function PhonebookList({ filter, onDelete }) {
+export function PhonebookList() {
   const contacts = useSelector(getContacts);
+  const filter = useSelector(getFilter);
   const dispatch = useDispatch();
-  // const newArr = contacts.filter(
-  //   item =>
-  //     item.name.toLowerCase().includes(filter.toLowerCase()) ||
-  //     item.number.includes(filter)
-  // );
+  const newArr = contacts.filter(item =>
+    item.name.toLowerCase().includes(filter.toLowerCase())
+  );
 
   return (
     <>
       <ul className={css.list}>
-        {contacts.map(({ name, number, id }) => {
+        {newArr.map(({ name, number, id }) => {
           return (
             <li id={id} key={id}>
               {name}: {number}

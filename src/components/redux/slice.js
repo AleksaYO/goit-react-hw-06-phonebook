@@ -1,13 +1,6 @@
-// import { initialState } from './initialState';
+import { initialState } from './initialState';
 import { createSlice, nanoid } from '@reduxjs/toolkit';
 import { Notify } from 'notiflix';
-
-export const initialState = () => {
-  return {
-    contacts: [],
-    filter: '',
-  };
-};
 
 const phonebookSlice = createSlice({
   name: 'phonebook',
@@ -39,7 +32,9 @@ const phonebookSlice = createSlice({
         state.contacts = state.contacts.filter(item => item.id !== payload);
       },
     },
-    filteredContacts(state, sction) {},
+    filteredContacts(state, { payload }) {
+      state.filter = payload;
+    },
   },
 });
 
