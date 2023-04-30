@@ -1,7 +1,7 @@
 import css from './Phonebook.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { getContacts, getFilter } from 'components/redux/selectors';
-import { deleteContact } from 'components/redux/slice';
+import { getContacts, getFilter } from 'redux/selectors';
+import { deleteContact } from 'redux/slice';
 
 export function PhonebookList() {
   const contacts = useSelector(getContacts);

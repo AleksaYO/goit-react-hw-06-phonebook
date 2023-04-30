@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { addContact } from 'components/redux/slice';
+import { addContact } from 'redux/slice';
 import css from './Phonebook.module.css';
 
 export function Form({ UpdateContacs }) {

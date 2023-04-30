@@ -1,4 +1,4 @@
-import { filteredContacts } from 'components/redux/slice';
+import { filteredContacts } from 'redux/slice';
 import { useDispatch } from 'react-redux';
 import css from './Phonebook.module.css';
 

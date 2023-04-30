@@ -14,8 +14,6 @@ const phonebookSlice = createSlice({
         } else {
           state.contacts.push(payload);
         }
-
-        console.log(payload);
       },
       prepare({ name, number }) {
         return {
